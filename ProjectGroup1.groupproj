@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{55F002C4-633A-405C-BFDA-D4F7E1622D82}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Elevator.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\ElevatorTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Elevator">
+        <MSBuild Projects="Elevator.dproj"/>
+    </Target>
+    <Target Name="Elevator:Clean">
+        <MSBuild Projects="Elevator.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Elevator:Make">
+        <MSBuild Projects="Elevator.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ElevatorTests">
+        <MSBuild Projects="Test\ElevatorTests.dproj"/>
+    </Target>
+    <Target Name="ElevatorTests:Clean">
+        <MSBuild Projects="Test\ElevatorTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ElevatorTests:Make">
+        <MSBuild Projects="Test\ElevatorTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Elevator;ElevatorTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Elevator:Clean;ElevatorTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Elevator:Make;ElevatorTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

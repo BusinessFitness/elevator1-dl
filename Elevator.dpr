@@ -5,8 +5,7 @@ program Elevator;
 {$R *.res}
 
 uses
-  System.SysUtils,
-  InitalTest in 'ElevatorTests\InitalTest.pas';
+  System.SysUtils;
 
 function GetElevatorName: String;
 begin
